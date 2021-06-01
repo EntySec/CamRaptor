@@ -36,8 +36,7 @@ class CamRaptor:
                 "uid": "admin"
             }
 
-            response = requests.get(f"http://{host}/device.rsp?opt=user&cmd=list",
-                                    cookies=cookies, verify=False, timeout=1)
+            response = requests.get(f"http://{host}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=1)
         except Exception:
             return None
         return response
