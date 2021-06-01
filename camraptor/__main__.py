@@ -52,5 +52,5 @@ class CamRaptor:
                 username = data["uid"]
                 password = data["pwd"]
 
-            return password
-        return None
+            return username, password
+        return None, None
