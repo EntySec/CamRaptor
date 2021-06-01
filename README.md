@@ -20,7 +20,7 @@ To use CamRaptor just type `camraptor` in your terminal.
 
 ```
 usage: camraptor [-h] [--threads] [--output OUTPUT] [--input INPUT]
-               [--address ADDRESS]
+                 [--address ADDRESS]
 
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR
 cameras to obtain device credentials.
