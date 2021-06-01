@@ -43,13 +43,14 @@ class CamRaptor:
 
     @staticmethod
     def exploit(response):
+        username, password = None, None
         if response.status_code == 200:
-            username, password = None, None
-            json_data = json.loads(response.text)
+            try:
+                json_data = json.loads(response.text)
+            except Exception:
+                return username, password
 
             for data in json_data["list"]:
                 username = data["uid"]
                 password = data["pwd"]
-
-            return username, password
-        return None, None
+        return username, password
