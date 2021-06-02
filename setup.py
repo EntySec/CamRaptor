@@ -45,5 +45,8 @@ setup(name='camraptor',
           "Programming Language :: Python :: 3",
           "Programming Language :: Python :: 3.8",
       ],
+      install_requires=[
+          'json',
+      ],
       zip_safe=False
 )
