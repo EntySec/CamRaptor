@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(name='camraptor',
       version='1.0',
-      description='CamRaptor',
+      description='CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain device credentials.',
       url='http://github.com/EntySec/CamRaptor',
       author='EntySec',
       author_email='entysec@gmail.com',
