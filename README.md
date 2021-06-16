@@ -92,7 +92,7 @@ from camraptor import CamRaptor
 
 There are all CamRaptor basic functions that can be used to exploit specified device.
 
-* `connect(host)` - Connect specified defice by netword address.
+* `connect(host)` - Connect specified defice by network address.
 * `exploit(device)` - Exploit connected device.
 
 ### Examples
