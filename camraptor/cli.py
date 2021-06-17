@@ -74,7 +74,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             try:
                 shodan = Shodan(self.args.api)
                 results = shodan.search(query='/login.rsp')
-                adresses = list()
+                addresses = list()
                 for result in results['matches']:
                     addresses.append(result['ip_str'] + ':' + str(result['port']))
             except Exception:
