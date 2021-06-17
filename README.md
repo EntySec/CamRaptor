@@ -20,7 +20,7 @@ To use CamRaptor just type `camraptor` in your terminal.
 
 ```
 usage: camraptor [-h] [--threads] [--output OUTPUT] [--input INPUT]
-                 [--address ADDRESS]
+                 [--address ADDRESS] [--api API]
 
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR
 cameras to obtain device credentials.
@@ -31,6 +31,7 @@ optional arguments:
   --output OUTPUT    Output result to file.
   --input INPUT      Input file of addresses.
   --address ADDRESS  Single address.
+  --api API          Shodan API key for exploiting devices over Internet.
 ```
 
 ### Examples
