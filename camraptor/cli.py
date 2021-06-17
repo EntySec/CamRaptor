@@ -34,7 +34,7 @@ from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
-    description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain device credentials."
+    description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain camera credentials."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-t', '--threads', dest='threads', action='store_true', help='Use threads for fastest work.')
     parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
