@@ -59,6 +59,8 @@ Let's try to use Shodan search engine to exploit cameras over Internet, we will 
 camover -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 ```
 
+**NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
+
 **output:**
 
 ```shell
