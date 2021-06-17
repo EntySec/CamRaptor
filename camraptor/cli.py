@@ -27,6 +27,8 @@
 import argparse
 import threading
 
+from shodan import Shodan
+
 from .__main__ import CamRaptor
 from .badges import Badges
 
