@@ -44,23 +44,12 @@ class CamRaptorCLI(CamRaptor, Badges):
     args = parser.parse_args()
 
     def hack(self, host):
-        self.print_process(f"({host}) - connecting to camera...")
-        response = self.connect(host)
+        username, password = self.exploit(response)
 
-        if response is not None:
-            self.print_process(f"({host}) - accessing camera config...")
-            username, password = self.exploit(response)
-
-            if username is not None and password is not None:
-                self.print_process(f"({host}) - extracting camera credentials...")
-                return f"({host}) - {username}:{password}"
-            self.print_error(f"({host}) - config access denied!")
-            return None
-        self.print_error(f"({host}) - connection rejected!")
-        return None
+        if username is not None and password is not None:
+            return f"({host}) - {username}:{password}"
 
     def thread(self, number, host):
-        self.print_process(f"Initializing thread #{str(number)}...")
         result = self.hack(host)
         if result:
             if not self.args.output:
@@ -68,7 +57,6 @@ class CamRaptorCLI(CamRaptor, Badges):
             else:
                 with open(self.args.output, 'a') as f:
                     f.write(f"{result}\n")
-        self.print_information(f"Thread #{str(number)} completed.")
         
     def start(self):
         if self.args.api:
