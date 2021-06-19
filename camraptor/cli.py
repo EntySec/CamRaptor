@@ -49,8 +49,8 @@ class CamRaptorCLI(CamRaptor, Badges):
         if username is not None and password is not None:
             return f"({host}) - {username}:{password}"
 
-    def thread(self, number, host):
-        result = self.hack(host)
+    def thread(self, address):
+        result = self.hack(address)
         if result:
             if not self.args.output:
                 self.print_success(result)
@@ -71,38 +71,56 @@ class CamRaptorCLI(CamRaptor, Badges):
                 self.print_error("Failed to authorize Shodan!")
                 return
             self.print_success("Authorization successfully completed!")
+
+            string = "/-\|"
             counter = 0
+
             for address in addresses:
+                if counter >= len(string):
+                    counter = 0
+                self.print_multi(f"Exploiting... ({address}) {string[counter]}")
+
                 if not self.args.threads:
                     result = hack(address)
                     if result:
                         if not self.args.output:
-                            self.print_success(result)
+                            self.print_success(f"\033[1K\r{result}")
                         else:
                             with open(self.args.output, 'a') as f:
                                 f.write(f"{result}\n")
                 else:
-                    process = threading.Thread(target=self.thread, args=[counter, address])
+                    process = threading.Thread(target=self.thread, args=[address])
                     process.start()
                 counter += 1
+
         elif self.args.input:
             with open(self.args.input, 'r') as f:
                 lines = f.read().strip().split('\n')
                 line_number = 0
+
+                string = "/-\|"
+                counter = 0
+
                 for line in lines:
+                    if counter >= len(string):
+                        counter = 0
+                    self.print_multi(f"Exploiting... ({address}) {string[counter]}")
+
                     if not self.args.threads:
                         result = self.hack(line)
                         if result:
                             if not self.args.output:
-                                self.print_success(result)
+                                self.print_success(f"\033[1K\r{result}")
                             else:
                                 with open(self.args.output, 'a') as f:
                                     f.write(f"{result}\n")
                     else:
-                        process = threading.Thread(target=self.thread, args=[line_number, line])
+                        process = threading.Thread(target=self.thread, args=[line])
                         process.start()
-                    line_number += 1
+                    counter += 1
+
         elif self.args.address:
+            self.print_process(f"Exploiting {self.args.address}...")
             result = self.hack(self.args.address)
             if result:
                 if not self.args.output:
