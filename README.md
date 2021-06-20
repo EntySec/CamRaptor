@@ -68,7 +68,7 @@ camraptor -t -i cameras.txt -o passwords.txt
 
 ## API usage
 
-CamRaptor also has their own Python API that can be invoked by importing CamRaptor to your code:
+CamRaptor also has their own Python API that can be invoked by importing CamRaptor to your code.
 
 ```python
 from camraptor import CamRaptor
