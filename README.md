@@ -1,6 +1,6 @@
 # CamRaptor
 
-CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain camera credentials.
+CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain network camera credentials.
 
 ## Features
 
@@ -22,7 +22,7 @@ To use CamRaptor just type `camraptor` in your terminal.
 usage: camraptor [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS] [--api API]
 
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR
-cameras to obtain camera credentials.
+cameras to obtain network camera credentials.
 
 optional arguments:
   -h, --help            show this help message and exit
