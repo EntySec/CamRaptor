@@ -52,7 +52,7 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         result = f"({address}) - {result[0]}:{result[1]}"
         if not self.args.output:
-            self.print_success(f"\033[1K\r{result}")
+            self.print_success(result)
         else:
             with open(self.args.output, 'a') as f:
                 f.write(f"{result}\n")
@@ -96,7 +96,7 @@ class CamRaptorCLI(CamRaptor, Badges):
                 for address in addresses:
                     if counter >= 4:
                         counter = 0
-                    self.print_multi(f"Exploiting... ({address}) {"/-\|"[counter]}")
+                    self.print_process(f"Exploiting... ({address}) {"/-\|"[counter]}", end='')
 
                     if not self.args.threads:
                         self.thread(address)
