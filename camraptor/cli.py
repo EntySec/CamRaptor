@@ -76,7 +76,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             for address in addresses:
                 if counter >= len(line):
                     counter = 0
-                self.print_multi(f"Exploiting... ({address}) {line[counter]}")
+                self.print_process(f"Exploiting... ({address}) {line[counter]}")
 
                 if not self.args.threads:
                     self.thread(address)
