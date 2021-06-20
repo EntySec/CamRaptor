@@ -38,7 +38,7 @@ optional arguments:
 
 ### Examples
 
-**Exploiting single cammera**
+**Exploiting single camera**
 
 Let's hack my camera just for fun.
 
@@ -81,6 +81,8 @@ There are all CamRaptor basic functions that can be used to exploit specified ca
 * `exploit(address)` - Exploit camera by given address.
 
 ### Examples
+
+**Exploiting single camera**
 
 ```python
 from camraptor import CamRaptor
