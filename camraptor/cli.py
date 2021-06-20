@@ -36,7 +36,7 @@ from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
-    timeout = 0.1
+    timeout = 1
 
     description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain camera credentials."
     parser = argparse.ArgumentParser(description=description)
