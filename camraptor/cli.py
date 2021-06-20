@@ -121,7 +121,7 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
-            self.thread(self.args.address, self.timeout*10)
+            self.thread(self.args.address, self.timeout*30)
         else:
             self.parser.print_help()
 
