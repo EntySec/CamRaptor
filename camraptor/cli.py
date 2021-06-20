@@ -133,6 +133,7 @@ class CamRaptorCLI(CamRaptor, Badges):
                 if thread.is_alive():
                     thread.join()
                 counter += 1
+        self.print_empty(end='')
 
 def main():
     cli = CamRaptorCLI()
