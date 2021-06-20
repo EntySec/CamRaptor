@@ -24,6 +24,8 @@
 # SOFTWARE.
 #
 
+
+import os
 import argparse
 import threading
 
@@ -51,7 +53,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             else:
                 with open(self.args.output, 'a') as f:
                     f.write(f"{result}\n")
-        
+
     def start(self):
         if self.args.api:
             self.print_process("Authorizing Shodan by given API key...")
@@ -88,6 +90,10 @@ class CamRaptorCLI(CamRaptor, Badges):
                 counter += 1
 
         elif self.args.input:
+            if not os.path.exists(self.args.input):
+                self.output_error(f"Input file: {self.args.input}: does not exist!")
+                return
+
             with open(self.args.input, 'r') as f:
                 addresses = f.read().strip().split('\n')
 
@@ -95,9 +101,9 @@ class CamRaptorCLI(CamRaptor, Badges):
                 counter = 0
 
                 for address in addresses:
-                    if counter >= len(string):
+                    if counter >= len(line):
                         counter = 0
-                    self.print_multi(f"Exploiting... ({address}) {string[counter]}")
+                    self.print_multi(f"Exploiting... ({address}) {line[counter]}")
 
                     if not self.args.threads:
                         result = self.exploit(address)
