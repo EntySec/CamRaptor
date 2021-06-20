@@ -59,6 +59,12 @@ class CamRaptorCLI(CamRaptor, Badges):
                     f.write(f"{result}\n")
 
     def start(self):
+        line = "/-\|"
+        counter = 0
+
+        if self.args.threads:
+            threads = list()
+
         if self.args.api:
             self.print_process("Authorizing Shodan by given API key...")
             try:
@@ -72,9 +78,6 @@ class CamRaptorCLI(CamRaptor, Badges):
                 return
             self.print_success("Authorization successfully completed!")
 
-            line = "/-\|"
-            counter = 0
-
             for address in addresses:
                 if counter >= len(line):
                     counter = 0
@@ -84,10 +87,11 @@ class CamRaptorCLI(CamRaptor, Badges):
                     self.thread(address)
                 else:
                     thread_delay(self.thread_delay)
-                    process = threading.Thread(target=self.thread, args=[address])
-                    process.start()
+                    thread = threading.Thread(target=self.thread, args=[address])
+
+                    threads.append(thread)
+                    threads[counter].start()
                 counter += 1
-            self.print_empty(end='')
 
         elif self.args.input:
             if not os.path.exists(self.args.input):
@@ -96,9 +100,6 @@ class CamRaptorCLI(CamRaptor, Badges):
 
             with open(self.args.input, 'r') as f:
                 addresses = f.read().strip().split('\n')
-
-                line = "/-\|"
-                counter = 0
 
                 for address in addresses:
                     if counter >= len(line):
@@ -109,10 +110,23 @@ class CamRaptorCLI(CamRaptor, Badges):
                         self.thread(address)
                     else:
                         thread_delay(self.thread_delay)
-                        process = threading.Thread(target=self.thread, args=[address])
-                        process.start()
+                        thread = threading.Thread(target=self.thread, args=[address])
+
+                        threads.append(thread)
+                        threads[counter].start()
                     counter += 1
-            self.print_empty(end='')
+
+        if self.args.threads:
+            counter = 0
+
+            for thread in threads:
+                if counter >= len(line):
+                    counter = 0
+                self.print_process(f"Cleaning up... {line[counter]}")
+
+                if thread.is_alive():
+                    thread.join()
+                counter += 1
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
