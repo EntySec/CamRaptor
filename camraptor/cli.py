@@ -88,7 +88,7 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         elif self.args.input:
             if not os.path.exists(self.args.input):
-                self.output_error(f"Input file: {self.args.input}: does not exist!")
+                self.print_error(f"Input file: {self.args.input}: does not exist!")
                 return
 
             with open(self.args.input, 'r') as f:
