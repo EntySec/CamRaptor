@@ -89,8 +89,8 @@ class CamRaptorCLI(CamRaptor, Badges):
                     thread_delay(self.thread_delay)
                     thread = threading.Thread(target=self.thread, args=[address])
 
+                    thread.start()
                     threads.append(thread)
-                    threads[counter].start()
                 counter += 1
 
         elif self.args.input:
@@ -112,8 +112,8 @@ class CamRaptorCLI(CamRaptor, Badges):
                         thread_delay(self.thread_delay)
                         thread = threading.Thread(target=self.thread, args=[address])
 
+                        thread.start()
                         threads.append(thread)
-                        threads[counter].start()
                     counter += 1
 
         if self.args.threads:
