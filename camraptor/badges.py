@@ -26,6 +26,10 @@
 
 class Badges:
     @staticmethod
+    def print_empty(message, end='\n'):
+        print(f"\033[1K\r{message}", end=end)
+
+    @staticmethod
     def print_process(message, end='\n'):
         print(f"\033[1K\r\033[1;34m[*]\033[0m {message}", end=end)
 
