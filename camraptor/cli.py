@@ -24,7 +24,6 @@
 # SOFTWARE.
 #
 
-
 import os
 import argparse
 import threading
@@ -71,11 +70,13 @@ class CamRaptorCLI(CamRaptor, Badges):
                 return
             self.print_success("Authorization successfully completed!")
 
+            line = "/-\|"
             counter = 0
+
             for address in addresses:
-                if counter >= 4:
+                if counter >= len(line):
                     counter = 0
-                self.print_multi(f"Exploiting... ({address}) {"/-\|"[counter]}")
+                self.print_multi(f"Exploiting... ({address}) {line[counter]}")
 
                 if not self.args.threads:
                     self.thread(address)
@@ -83,6 +84,7 @@ class CamRaptorCLI(CamRaptor, Badges):
                     process = threading.Thread(target=self.thread, args=[address])
                     process.start()
                 counter += 1
+            self.print_empty(end='')
 
         elif self.args.input:
             if not os.path.exists(self.args.input):
@@ -92,11 +94,13 @@ class CamRaptorCLI(CamRaptor, Badges):
             with open(self.args.input, 'r') as f:
                 addresses = f.read().strip().split('\n')
 
+                line = "/-\|"
                 counter = 0
+
                 for address in addresses:
-                    if counter >= 4:
+                    if counter >= len(line):
                         counter = 0
-                    self.print_process(f"Exploiting... ({address}) {"/-\|"[counter]}", end='')
+                    self.print_process(f"Exploiting... ({address}) {line[counter]}", end='')
 
                     if not self.args.threads:
                         self.thread(address)
@@ -104,6 +108,7 @@ class CamRaptorCLI(CamRaptor, Badges):
                         process = threading.Thread(target=self.thread, args=[address])
                         process.start()
                     counter += 1
+            self.print_empty(end='')
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
