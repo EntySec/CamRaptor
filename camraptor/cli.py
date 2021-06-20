@@ -116,6 +116,12 @@ class CamRaptorCLI(CamRaptor, Badges):
                         threads.append(thread)
                     counter += 1
 
+        elif self.args.address:
+            self.print_process(f"Exploiting {self.args.address}...")
+            self.thread(self.args.address)
+        else:
+            self.parser.print_help()
+
         if self.args.threads:
             counter = 0
 
@@ -127,12 +133,6 @@ class CamRaptorCLI(CamRaptor, Badges):
                 if thread.is_alive():
                     thread.join()
                 counter += 1
-
-        elif self.args.address:
-            self.print_process(f"Exploiting {self.args.address}...")
-            self.thread(self.args.address)
-        else:
-            self.parser.print_help()
 
 def main():
     cli = CamRaptorCLI()
