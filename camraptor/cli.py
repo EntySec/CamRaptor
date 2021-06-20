@@ -48,8 +48,8 @@ class CamRaptorCLI(CamRaptor, Badges):
     parser.add_argument('--api', dest='api', help='Shodan API key for exploiting devices over Internet.')
     args = parser.parse_args()
 
-    def thread(self, address):
-        result = self.exploit(address)
+    def thread(self, address, timeout=3):
+        result = self.exploit(address, timeout)
         if not result or len(result) < 2:
             return
 
