@@ -36,7 +36,7 @@ from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
-    timeout = 1
+    timeout = 0.1
 
     description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain camera credentials."
     parser = argparse.ArgumentParser(description=description)
@@ -86,10 +86,10 @@ class CamRaptorCLI(CamRaptor, Badges):
                 self.print_process(f"Exploiting... ({address}) {line[counter]}")
 
                 if not self.args.threads:
-                    self.thread(address, self.timeout*10)
+                    self.thread(address, self.timeout*30)
                 else:
                     sleep(self.timeout)
-                    process = threading.Thread(target=self.thread, args=[address, self.timeout*10])
+                    process = threading.Thread(target=self.thread, args=[address, self.timeout*30])
                     process.start()
                 counter += 1
             self.print_empty(end='')
@@ -111,10 +111,10 @@ class CamRaptorCLI(CamRaptor, Badges):
                     self.print_process(f"Exploiting... ({address}) {line[counter]}", end='')
 
                     if not self.args.threads:
-                        self.thread(address, self.timeout*10)
+                        self.thread(address, self.timeout*30)
                     else:
                         sleep(self.timeout)
-                        process = threading.Thread(target=self.thread, args=[address, self.timeout*10])
+                        process = threading.Thread(target=self.thread, args=[address, self.timeout*30])
                         process.start()
                     counter += 1
             self.print_empty(end='')
