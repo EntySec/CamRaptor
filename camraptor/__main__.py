@@ -49,4 +49,4 @@ class CamRaptor:
             for data in json_data["list"]:
                 username = data["uid"]
                 password = data["pwd"]
-            return f"({address}) - {username}:{password}"
+            return username, password
