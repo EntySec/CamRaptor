@@ -49,15 +49,14 @@ class CamRaptorCLI(CamRaptor, Badges):
 
     def thread(self, address):
         result = self.exploit(address)
-        if not result or len(result) < 2:
-            return
 
-        result = f"({address}) - {result[0]}:{result[1]}"
-        if not self.args.output:
-            self.print_success(result)
-        else:
-            with open(self.args.output, 'a') as f:
-                f.write(f"{result}\n")
+        if result:
+            result = f"({address}) - {result[0]}:{result[1]}"
+            if not self.args.output:
+                self.print_success(result)
+            else:
+                with open(self.args.output, 'a') as f:
+                    f.write(f"{result}\n")
 
     def start(self):
         if self.args.api:
