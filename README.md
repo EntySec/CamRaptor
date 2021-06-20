@@ -78,7 +78,7 @@ from camraptor import CamRaptor
 
 There are all CamRaptor basic functions that can be used to exploit specified camera.
 
-* `exploit(address)` - Exploit camera by given address.
+* `exploit(address)` - Exploit single camera by given address.
 
 ### Examples
 
