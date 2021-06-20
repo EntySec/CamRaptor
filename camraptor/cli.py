@@ -29,27 +29,26 @@ import argparse
 import threading
 
 from shodan import Shodan
-from time import sleep
+from time import sleep as thread_delay
 
 from .__main__ import CamRaptor
 from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
-    timeout = 0.1
+    thread_delay = 0.1
 
     description = "CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain camera credentials."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-t', '--threads', dest='threads', action='store_true', help='Use threads for fastest work.')
-    parser.add_argument('--timeout', dest='timeout', type=float, help='Timeout for each target.')
     parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
     parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
     parser.add_argument('-a', '--address', dest='address', help='Single address.')
     parser.add_argument('--api', dest='api', help='Shodan API key for exploiting devices over Internet.')
     args = parser.parse_args()
 
-    def thread(self, address, timeout=3):
-        result = self.exploit(address, timeout)
+    def thread(self, address):
+        result = self.exploit(address)
         if not result or len(result) < 2:
             return
 
@@ -61,9 +60,6 @@ class CamRaptorCLI(CamRaptor, Badges):
                 f.write(f"{result}\n")
 
     def start(self):
-        if self.args.timeout:
-            self.timeout = float(self.args.timeout)
-
         if self.args.api:
             self.print_process("Authorizing Shodan by given API key...")
             try:
@@ -86,10 +82,10 @@ class CamRaptorCLI(CamRaptor, Badges):
                 self.print_process(f"Exploiting... ({address}) {line[counter]}")
 
                 if not self.args.threads:
-                    self.thread(address, self.timeout*30)
+                    self.thread(address)
                 else:
-                    sleep(self.timeout)
-                    process = threading.Thread(target=self.thread, args=[address, self.timeout*30])
+                    thread_delay(self.thread_delay)
+                    process = threading.Thread(target=self.thread, args=[address])
                     process.start()
                 counter += 1
             self.print_empty(end='')
@@ -111,17 +107,17 @@ class CamRaptorCLI(CamRaptor, Badges):
                     self.print_process(f"Exploiting... ({address}) {line[counter]}", end='')
 
                     if not self.args.threads:
-                        self.thread(address, self.timeout*30)
+                        self.thread(address)
                     else:
-                        sleep(self.timeout)
-                        process = threading.Thread(target=self.thread, args=[address, self.timeout*30])
+                        thread_delay(self.thread_delay)
+                        process = threading.Thread(target=self.thread, args=[address])
                         process.start()
                     counter += 1
             self.print_empty(end='')
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
-            self.thread(self.args.address, self.timeout*30)
+            self.thread(self.args.address)
         else:
             self.parser.print_help()
 
