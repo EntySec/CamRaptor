@@ -128,7 +128,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             for thread in threads:
                 if counter >= len(line):
                     counter = 0
-                self.print_process(f"Cleaning up... {line[counter]}")
+                self.print_process(f"Cleaning up... {line[counter]}", end='')
 
                 if thread.is_alive():
                     thread.join()
