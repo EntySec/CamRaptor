@@ -66,7 +66,7 @@ camraptor -t -i cameras.txt -o passwords.txt
 
 **NOTE:** It will exploit all cameras in `cameras.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
 
-## CamRaptor API
+## API usage
 
 CamRaptor also has their own Python API that can be invoked by importing CamRaptor to your code:
 
