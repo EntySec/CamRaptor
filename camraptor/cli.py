@@ -159,5 +159,8 @@ class CamRaptorCLI(CamRaptor, Badges):
         self.print_empty(end='')
 
 def main():
-    cli = CamRaptorCLI()
-    cli.start()
+    try:
+        cli = CamRaptorCLI()
+        cli.start()
+    except Exception:
+        pass
