@@ -19,7 +19,8 @@ pip3 install git+https://github.com/EntySec/CamRaptor
 To use CamRaptor just type `camraptor` in your terminal.
 
 ```
-usage: camraptor [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS] [--api API]
+usage: camraptor [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS]
+                 [--shodan SHODAN] [--zoomeye ZOOMEYE] [-p PAGES]
 
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR
 cameras to obtain network camera credentials.
@@ -33,7 +34,10 @@ optional arguments:
                         Input file of addresses.
   -a ADDRESS, --address ADDRESS
                         Single address.
-  --api API             Shodan API key for exploiting devices over Internet.
+  --shodan SHODAN       Shodan API key for exploiting devices over Internet.
+  --zoomeye ZOOMEYE     ZoomEye API key for exploiting devices over Internet.
+  -p PAGES, --pages PAGES
+                        Number of pages you want to get from ZoomEye.
 ```
 
 ### Examples
