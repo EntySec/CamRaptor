@@ -1,5 +1,17 @@
 # CamRaptor
 
+<p>
+    <a href="https://entysec.netlify.app">
+        <img src="https://img.shields.io/badge/developer-EntySec-3572a5.svg">
+    </a>
+    <a href="https://github.com/EntySec/CamRaptor">
+        <img src="https://img.shields.io/badge/language-Python-3572a5.svg">
+    </a>
+    <a href="https://github.com/EntySec/CamRaptor/stargazers">
+        <img src="https://img.shields.io/github/stars/EntySec/CamRaptor?color=yellow">
+    </a>
+</p>
+
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain network camera credentials.
 
 ## Features
