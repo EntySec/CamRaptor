@@ -51,7 +51,8 @@ class CamRaptor:
             except Exception:
                 return None
 
-            for data in json_data["list"]:
-                username = data["uid"]
-                password = data["pwd"]
+            if 'list' in json_data:
+                for data in json_data["list"]:
+                    username = data["uid"]
+                    password = data["pwd"]
             return username, password
