@@ -130,6 +130,12 @@ print(creds)
     <a href="https://github.com/EntySec/RomBuster">
         <img src="https://img.shields.io/badge/EntySec-RomBuster-3572a5.svg">
     </a>
+    <a href="https://github.com/EntySec/IPinfoga">
+        <img src="https://img.shields.io/badge/EntySec-IPinfoga-3572a5.svg">
+    </a>
+    <a href="https://github.com/EntySec/Paranoid">
+        <img src="https://img.shields.io/badge/EntySec-Paranoid-3572a5.svg">
+    </a>
     <a href="https://github.com/EntySec/membrane">
         <img src="https://img.shields.io/badge/EntySec-membrane-f34c79.svg">
     </a>
