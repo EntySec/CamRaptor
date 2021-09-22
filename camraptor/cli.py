@@ -103,7 +103,7 @@ class CamRaptorCLI(CamRaptor, Badges):
         if self.args.zoomeye:
             self.print_process("Authorizing ZoomEye by given API key...")
             try:
-                zoomeye = 'https://api.zoomeye.org/host/search?query=html:"/login.rsp"&page='
+                zoomeye = 'https://api.zoomeye.org/host/search?query=rsp/1.0&page='
                 zoomeye_header = {
                     'Authorization': f'JWT {self.zoomeye}'
                 }
@@ -133,7 +133,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             self.print_process("Authorizing Shodan by given API key...")
             try:
                 shodan = Shodan(self.args.shodan)
-                results = shodan.search(query='html:"/login.rsp"')
+                results = shodan.search(query='rsp/1.0')
                 addresses = list()
                 for result in results['matches']:
                     addresses.append(result['ip_str'] + ':' + str(result['port']))
