@@ -96,6 +96,7 @@ class CamRaptorCLI(CamRaptor, Badges):
     def start(self):
         if self.args.output:
             directory = os.path.split(self.args.output)[0]
+
             if directory:
                 if not os.path.isdir(directory):
                     self.print_error(f"Directory: {directory}: does not exist!")
