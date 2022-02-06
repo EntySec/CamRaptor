@@ -29,7 +29,7 @@ from setuptools import setup, find_packages
 setup(name='camraptor',
       version='1.0.0',
       description='CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain network camera credentials.',
-      url='http://github.com/EntySec/CamRaptor',
+      url='https://github.com/EntySec/CamRaptor',
       author='EntySec',
       author_email='entysec@gmail.com',
       license='MIT',
