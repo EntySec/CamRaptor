@@ -26,13 +26,16 @@ import json
 import requests
 
 
-class CamRaptor:
+class CamRaptor(object):
     """ Main class of camraptor module.
 
     This main class of camraptor module is intended for providing
     an exploit for DVR camera vulnerability that extracts credentials
     through the unprotected endpoint.
     """
+
+    def __init__(self):
+        super().__init__()
 
     @staticmethod
     def exploit(address: str) -> tuple:
