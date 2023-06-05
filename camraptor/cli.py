@@ -47,7 +47,7 @@ class CamRaptorCLI(CamRaptor, Badges):
 
         self.description = (
             'CamRaptor is a tool that exploits several vulnerabilities in popular'
-            ' DVR cameras to obtain network camera credentials.',
+            ' DVR cameras to obtain network camera credentials.'
         )
 
         self.parser = argparse.ArgumentParser(description=self.description)
