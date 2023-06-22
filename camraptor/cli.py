@@ -26,11 +26,12 @@ import argparse
 import os
 import requests
 import threading
+
+from badges import Badges
 from shodan import Shodan
 from time import sleep as thread_delay
 
 from .__main__ import CamRaptor
-from .badges import Badges
 
 
 class CamRaptorCLI(CamRaptor, Badges):
