@@ -7,6 +7,9 @@
     <a href="https://github.com/EntySec/CamRaptor">
         <img src="https://img.shields.io/badge/language-Python-blue.svg">
     </a>
+    <a href="https://github.com/EntySec/CamRaptor/forks">
+        <img src="https://img.shields.io/github/forks/EntySec/CamRaptor?color=green">
+    </a>
     <a href="https://github.com/EntySec/CamRaptor/stargazers">
         <img src="https://img.shields.io/github/stars/EntySec/CamRaptor?color=yellow">
     </a>
