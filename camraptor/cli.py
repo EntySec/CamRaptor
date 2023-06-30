@@ -192,6 +192,7 @@ class CamRaptorCLI(CamRaptor, Badges):
             return
         self.print_empty(end='')
 
+
 def main() -> None:
     """ CamRaptor command-line interface
 
