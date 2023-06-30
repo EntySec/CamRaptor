@@ -192,7 +192,6 @@ class CamRaptorCLI(CamRaptor, Badges):
             return
         self.print_empty(end='')
 
-
 def main() -> None:
     """ CamRaptor command-line interface
 
@@ -202,5 +201,5 @@ def main() -> None:
     try:
         cli = CamRaptorCLI()
         cli.start()
-    except Exception:
+    except BaseException:
         pass
