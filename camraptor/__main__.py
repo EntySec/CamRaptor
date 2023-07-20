@@ -57,13 +57,13 @@ class CamRaptor(object):
                 timeout=3
             )
         except Exception:
-            return None, None
+            return
 
         if response.status_code == 200:
             try:
                 json_data = json.loads(response.text)
             except Exception:
-                return None, None
+                return
 
             if 'list' in json_data:
                 for data in json_data["list"]:
@@ -71,5 +71,3 @@ class CamRaptor(object):
                     password = data["pwd"]
 
                     return username, password
-
-        return None, None
