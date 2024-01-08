@@ -1,22 +1,10 @@
 # CamRaptor
 
-<p>
-    <a href="https://entysec.com">
-        <img src="https://img.shields.io/badge/developer-EntySec-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/CamRaptor">
-        <img src="https://img.shields.io/badge/language-Python-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/CamRaptor/forks">
-        <img src="https://img.shields.io/github/forks/EntySec/CamRaptor?color=green">
-    </a>
-    <a href="https://github.com/EntySec/CamRaptor/stargazers">
-        <img src="https://img.shields.io/github/stars/EntySec/CamRaptor?color=yellow">
-    </a>
-    <a href="https://www.codefactor.io/repository/github/EntySec/CamRaptor">
-        <img src="https://www.codefactor.io/repository/github/EntySec/CamRaptor/badge">
-    </a>
-</p>
+[![Developer](https://img.shields.io/badge/developer-EntySec-blue.svg)](https://entysec.com)
+[![Language](https://img.shields.io/badge/language-Python-blue.svg)](https://github.com/EntySec/CamRaptor)
+[![Forks](https://img.shields.io/github/forks/EntySec/CamRaptor?style=flat&color=green)](https://github.com/EntySec/CamRaptor/forks)
+[![Stars](https://img.shields.io/github/stars/EntySec/CamRaptor?style=flat&color=yellow)](https://github.com/EntySec/CamRaptor/stargazers)
+[![CodeFactor](https://www.codefactor.io/repository/github/EntySec/CamRaptor/badge)](https://www.codefactor.io/repository/github/EntySec/CamRaptor)
 
 CamRaptor is a tool that exploits several vulnerabilities in popular DVR cameras to obtain network camera credentials.
 
