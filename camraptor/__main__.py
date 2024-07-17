@@ -34,9 +34,6 @@ class CamRaptor(object):
     through the unprotected endpoint.
     """
 
-    def __init__(self) -> None:
-        super().__init__()
-
     @staticmethod
     def exploit(address: str) -> tuple:
         """ Exploit the vulnerability in DVR camera and extract credentials.
